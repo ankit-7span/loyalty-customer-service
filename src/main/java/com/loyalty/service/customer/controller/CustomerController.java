@@ -13,14 +13,9 @@ public class CustomerController {
     @Autowired
     CustomerHandler customerHandler;
 
-    @PostMapping("/addPointsToWallet/{customerID}/{purchaseAmount}")
-    public BaseResponse addPointsToWallet(@PathVariable Long customerID, @PathVariable Long purchaseAmount) {
-        return customerHandler.addPointsToWallet(customerID, purchaseAmount);
-    }
-
-    @GetMapping("/getPoints/{customerID}")
-    public ResponseDTO getPoints(@PathVariable Long customerID) {
-        return customerHandler.getPoints(customerID);
+    @GetMapping("/getPoints/{customerId}")
+    public ResponseDTO getPoints(@PathVariable Long customerId) {
+        return customerHandler.getPoints(customerId);
     }
 
 }
