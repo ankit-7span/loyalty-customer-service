@@ -64,7 +64,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public BaseResponse addPointsToWallet(Long customerID, Long purchaseAmount) {
+    public BaseResponse addPointsToWallet(Long customerID, Long loyaltyPoint) {
         log.info("Adding points to the user's wallet if he purchase amount >= 100 rs");
 
         Optional<Customer> customer = customerRepository.findById(customerID);
@@ -72,7 +72,7 @@ public class CustomerServiceImpl implements CustomerService {
         log.debug("Fetched customer having customer id {} :::: {}", customerID, customer);
 
         if (customer.isPresent()) {
-            walletService.updateWallet(customer.get(), purchaseAmount);
+            walletService.updateWallet(customer.get(), loyaltyPoint);
             return BaseResponse.builder().resultCode(HttpStatus.OK.value()).resultMessage("Saved Data Successfully").build();
         }
         return BaseResponse.builder().resultCode(HttpStatus.OK.value()).resultMessage("Customer not exist in our system having this customer id " + customerID).build();

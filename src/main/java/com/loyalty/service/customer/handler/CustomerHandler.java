@@ -18,8 +18,8 @@ public class CustomerHandler {
     @Autowired
     CustomerService customerService;
 
-    public BaseResponse addPointsToWallet(Long customerID, Long purchaseAmount) {
-        return customerService.addPointsToWallet(customerID, purchaseAmount);
+    public BaseResponse addPointsToWallet(Long customerID, Long loyaltyPoint) {
+        return customerService.addPointsToWallet(customerID, loyaltyPoint);
     }
 
     public ResponseDTO getPoints(Long customerID) {

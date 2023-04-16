@@ -27,7 +27,7 @@ public class WalletConsumer {
         try {
             WalletEvent walletEvent = objectMapper.readValue(event, WalletEvent.class);
             WalletDetails walletDetails = walletEvent.getWalletDetails();
-            customerService.deductLoyaltyPoints(walletDetails.getCustomerId(), walletDetails.getLoyaltyPoints());
+            customerService.addPointsToWallet(walletDetails.getCustomerId(), walletDetails.getLoyaltyPoints());
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }

@@ -28,15 +28,12 @@ public class WalletServiceImpl implements WalletService {
 
 
     @Override
-    public Wallet updateWallet(Customer customer, Long purchaseAmount) {
+    public Wallet updateWallet(Customer customer, Long loyaltyPoint) {
         Wallet wallet = customer.getWallet();
-        Integer loyaltyPoint = getLoyaltyPoint(purchaseAmount);
         Long points = wallet.getLoyaltyPoint() + loyaltyPoint;
-        if (purchaseAmount >= 100) {
-            wallet.setLoyaltyPoint(points);
-            log.debug("Updating wallet having wallet id {} :::: {}", wallet.getId(), wallet);
-            walletRepository.save(wallet);
-        }
+        wallet.setLoyaltyPoint(points);
+        log.debug("Updating wallet having wallet id {} :::: {}", wallet.getId(), wallet);
+        walletRepository.save(wallet);
         return wallet;
     }
 
